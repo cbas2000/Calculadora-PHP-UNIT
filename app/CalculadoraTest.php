@@ -43,7 +43,7 @@ class CalculadoraTest extends TestCase{
         $calculadora = new Calculadora();
         //$this->assertEquals(6, $calculadora->sumar(3,3));
         //$this->assertSame(6, $calculadora->sumar(3,3));
-        $this->assertEquals($resultado_esperado,$calculadora->sumar($numero1,$numero2));
+        $this->assertSame($resultado_esperado,$calculadora->sumar($numero1,$numero2));
     }
     /**
     * @dataProvider restarProveedor
@@ -79,8 +79,10 @@ class CalculadoraTest extends TestCase{
     }
     public function testGenerarArreglo(){
         $calculadora = new Calculadora();
-        //$this->assertContains(8, $calculadora->generarArreglo());
+        //$this->assertContains(5, $calculadora->generarArreglo());
         //$this->assertCount(5, $calculadora->generarArreglo());
+        //$this->assertEmpty($calculadora->generarArreglo());
+        //$this->assertNotEmpty($calculadora->generarArreglo());
         $this->assertNotEmpty($calculadora->generarArreglo());
     }
     public function testCapturarEntradasPermutacion(){
@@ -91,14 +93,14 @@ class CalculadoraTest extends TestCase{
         $this->assertSame(array(5, 3), $stub->capturarEntradasPermutacion());  
     }
     public function testCalcularPermutacion(){
-        /* Se crea un mock para la clase Calculadora.
-        Solo se hace mock al método calcularFactorial*/
+        /* Se es creado un mock para la clase Calculadora.
+        Solo para método calcularFactorial*/
         $mock = $this->getMockBuilder('Calculadora')
             ->onlyMethods(array('calcularFactorial'))
             ->getMock();
 
-        /* Se configuran las expectativas para el método calcularFactorial
-        se llamará dos veces y devolverá 120 y 6, en cada ocasión, respectivamente. */
+        /* Configuracion de las expectativas para el método calcularFactorial
+        sera llamado dos veces y devolverá 120 y 6, en cada ocasión, respectivamente. */
         $mock->expects($this->exactly(2))
             ->method('calcularFactorial')
             ->will($this->onConsecutiveCalls(120, 6));
