@@ -126,7 +126,7 @@ class CalculadoraTest extends TestCase{
         // $resultado_calculado = $mock->calcularFactorial(5);
         // $this->assertEquals(120, $resultado_calculado);
         // // $mock->calcularFactorial(3);
-        // $this->assertEquals(12, $resultado_calculado);
+        // $this->assertEquals(4, $resultado_calculado);
 
         $mock->expects($this->exactly(2))
              ->method('calcularFactorial')
